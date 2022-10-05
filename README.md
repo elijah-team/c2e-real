@@ -5,7 +5,7 @@ C => Elijah source code translator.
 
 ### Building
 
-```bash
+```bash 
 v .
 ```
 ... or if you want to debug c2v behaviour:
