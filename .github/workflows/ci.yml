@@ -14,10 +14,10 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: vlang/v
-      - name: Checkout c2v
+      - name: Checkout c2e
         uses: actions/checkout@v2
         with:
-          path: c2v
+          path: c2e
 
       - name: Install Dependencies
         run: |
@@ -27,18 +27,18 @@ jobs:
       - name: Build V
         run: make && ./v symlink -githubci
 
-      - name: Build c2v and setup ~/code
+      - name: Build c2e and setup ~/code
         run: |
-          ls -la /home/runner/work/c2v/c2v/c2v
-          ln -s  /home/runner/work/c2v/c2v/c2v ~/.vmodules/c2v
+          ls -la /home/runner/work/c2e/c2e/c2e
+          ln -s  /home/runner/work/c2e/c2e/c2e ~/.vmodules/c2e
           mkdir -p ~/code/
-          v -g ~/.vmodules/c2v/
-          ~/.vmodules/c2v/c2v || true
+          v -g ~/.vmodules/c2e/
+          ~/.vmodules/c2e/c2e || true
 
-      - name: Test c2v
+      - name: Test c2e
         run: |
-          v -g test ~/.vmodules/c2v/
-          v -g run ~/.vmodules/c2v/tests/run_tests.vsh
+          v -g test ~/.vmodules/c2e/
+          v -g run ~/.vmodules/c2e/tests/run_tests.vsh
 
       - name: Build original Chocolate Doom
         run: |
@@ -49,7 +49,7 @@ jobs:
 
       - name: Translate just p_enemy.v
         run: |
-          cd ~/.vmodules/c2v/
+          cd ~/.vmodules/c2e/
           v -g run tools/build_doom_file.vsh doom/p_enemy
 
       - name: Translate the whole game in project/folder mode
@@ -65,10 +65,10 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: vlang/v
-      - name: Checkout c2v
+      - name: Checkout c2e
         uses: actions/checkout@v2
         with:
-          path: c2v
+          path: c2e
 
       - name: Install Dependencies
         run: brew install sdl2 sdl2_mixer sdl2_net libpng libsamplerate
@@ -76,18 +76,18 @@ jobs:
       - name: Build V
         run: make && ./v symlink -githubci
 
-      - name: Build c2v and setup ~/code
+      - name: Build c2e and setup ~/code
         run: |
-          ls -la /Users/runner/work/c2v/c2v/c2v
-          ln -s  /Users/runner/work/c2v/c2v/c2v ~/.vmodules/c2v
+          ls -la /Users/runner/work/c2e/c2e/c2e
+          ln -s  /Users/runner/work/c2e/c2e/c2e ~/.vmodules/c2e
           mkdir -p ~/code/
-          v -g ~/.vmodules/c2v/
-          ~/.vmodules/c2v/c2v || true
+          v -g ~/.vmodules/c2e/
+          ~/.vmodules/c2e/c2e || true
 
-      - name: Test c2v
+      - name: Test c2e
         run: |
-          v -g test ~/.vmodules/c2v/
-          v -g run ~/.vmodules/c2v/tests/run_tests.vsh
+          v -g test ~/.vmodules/c2e/
+          v -g run ~/.vmodules/c2e/tests/run_tests.vsh
 
       - name: Build original Chocolate Doom
         run: |
@@ -98,7 +98,7 @@ jobs:
 
       - name: Translate just p_enemy.v
         run: |
-          cd ~/.vmodules/c2v/
+          cd ~/.vmodules/c2e/
           v -g run tools/build_doom_file.vsh doom/p_enemy
 
       - name: Translate the whole game in project/folder mode

@@ -26,16 +26,16 @@ jobs:
       - name: Build local v
         run: make && ./v symlink -githubci
 
-      - name: Checkout c2v
+      - name: Checkout c2e
         uses: actions/checkout@v2
         with:
-          path: c2v
+          path: c2e
 
       - name: Setup dependencies
         run: |
           sudo apt-get update -y -qq
 
-          # c2v / DOOM dependencies
+          # c2e / DOOM dependencies
           sudo apt-get install libsdl2-dev libsdl2-mixer-dev libsdl2-net-dev libpng-dev libsamplerate0-dev
 
           # vgret dependencies
@@ -56,18 +56,18 @@ jobs:
           # Get regression images to test against
           git clone https://github.com/Larpon/doom-regression-images
 
-      - name: Build c2v and setup ~/code
+      - name: Build c2e and setup ~/code
         run: |
-          ls -la /home/runner/work/c2v/c2v/c2v
-          ln -s  /home/runner/work/c2v/c2v/c2v ~/.vmodules/c2v
+          ls -la /home/runner/work/c2e/c2e/c2e
+          ln -s  /home/runner/work/c2e/c2e/c2e ~/.vmodules/c2e
           mkdir -p ~/code/
-          v -g ~/.vmodules/c2v/
-          ~/.vmodules/c2v/c2v || true
+          v -g ~/.vmodules/c2e/
+          ~/.vmodules/c2e/c2e || true
 
-      - name: Test c2v
+      - name: Test c2e
         run: |
-          v -g test ~/.vmodules/c2v/
-          v -g run ~/.vmodules/c2v/tests/run_tests.vsh
+          v -g test ~/.vmodules/c2e/
+          v -g run ~/.vmodules/c2e/tests/run_tests.vsh
 
       - name: Build original Chocolate Doom
         run: |
