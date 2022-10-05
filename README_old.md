@@ -1,6 +1,10 @@
-## C2E
+## C2V
 
-C => Elijah source code translator.
+C => V source code translator.
+
+Demo Video: Translating DOOM from C to V, building and running it.
+
+https://www.youtube.com/watch?v=6oXrz3oRoEg
 
 
 ### Building
